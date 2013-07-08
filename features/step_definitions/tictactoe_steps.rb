@@ -27,13 +27,14 @@ And /^The\ position\ is\ (valid|invalid)$/ do |validate_digit|
   end
 end
 
-And /^The\ space\ on\ board\ is\ (empty|filled)$/ do |validate_space|
+And /^The\ cell\ on\ board\ is\ (empty|filled)$/ do |validate_space|
   valid = Random.new.rand(0..8)
   case validate_space
   when 'empty'
     @board.is_empty?(valid).should == true
-  when 'filled'	  
-    #@board.is_empty?(ll).should == false
+  when 'filled'
+    @board.move 0, 'X'	  
+    @board.is_empty?(0).should == false
   end
 end
 

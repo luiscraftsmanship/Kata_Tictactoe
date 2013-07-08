@@ -68,7 +68,7 @@ class Game
     @board.show
   end
 
- def advance_turn
+  def advance_turn
     self.turn = ( @turn == X  ? O : X )
   end
 end

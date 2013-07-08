@@ -17,21 +17,24 @@ Feature: The Tictactoe game
     Then I can't insert 9 like position
     And The position is invalid
 
-  Scenario: The space on board is empty
+  Scenario: The cell on board is empty
     When I start a new game
     Then I can insert 0 like position 
     And The position is valid
-    And The space on board is empty
+    And The cell on board is empty
 
   Scenario: Marks the board like player X
     When I start a new game
     Then I can insert 0 like position
     And The position is valid
-    And The space on board is empty
+    And The cell on board is empty
     Then I can do a mark like player X
     
   Scenario: The game advance turn
     When I start a new game
+    Then I can insert 0 like position
+    And The position is valid
+    And The cell on board is empty
     Then I can do a mark like player X
     And The game advance turn
 
@@ -41,15 +44,16 @@ Feature: The Tictactoe game
     And The game advance turn
     Then I can do a mark like player O
 
-  Scenario: The space on board isn't empty
+  Scenario: The cell on board isn't empty
     When I start a new game
     Then I can insert 0 like position
     And The position is valid
-    And The space on board is empty
+    And The cell on board is empty
     Then I can do a mark like player X
     And The game advance turn
     Then I can insert 0 like position
     And The position is valid
-    #And The position isn't empty
+    And The cell on board is filled
+    
    
 

@@ -25,13 +25,13 @@ class Board
   end
 
   def is_empty? position
-    result = @board.at( position.to_i ) != ' '
+    result = @board.at(position.to_i) != ' '
     return !result
   end
 
   def move position, turn
-    @board.delete_at( position.to_i )
-    @board.insert( position.to_i, turn.to_s )
+    @board.delete_at(position.to_i)
+    @board.insert(position.to_i, turn.to_s)
   end
  
   def row_1_filled?
