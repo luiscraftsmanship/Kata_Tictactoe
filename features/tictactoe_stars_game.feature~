@@ -1,0 +1,10 @@
+Feature: empezar juego tictactoe
+  Como un jugador del tictactoe
+  Yo deseo empezar una partida de tictactoe
+  Asi yo puedo jugar al tictactoe
+  
+  Scenario: empezar juego
+    Given Yo no estoy todavia jugando
+    When Yo empiezo un nuevo juego
+    Then Yo debo ver "Bienvenido al Tictactoe!"
+    And Yo debo ver "Ingrese su marca:"
