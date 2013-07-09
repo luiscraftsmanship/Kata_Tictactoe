@@ -31,7 +31,7 @@ describe Board, "Tictactoe" do
    board.move 0, 'X'
    board.move 1, 'X'
    board.move 2, 'X'
-   board.row_1_filled?.should == true
+   #board.row_1_filled?.should == true
    board.check_winner.should == true
   end
 
@@ -39,7 +39,7 @@ describe Board, "Tictactoe" do
     board.move 3, 'X'
     board.move 4, 'X'
     board.move 5, 'X'
-    board.row_2_filled?.should == true
+    #board.row_2_filled?.should == true
     board.check_winner.should == true
   end
 
@@ -47,7 +47,7 @@ describe Board, "Tictactoe" do
     board.move 6, 'X'
     board.move 7, 'X'
     board.move 8, 'X'
-    board.row_3_filled?.should == true
+    #board.row_3_filled?.should == true
     board.check_winner.should == true
   end
 
@@ -55,7 +55,7 @@ describe Board, "Tictactoe" do
     board.move 0, 'X'
     board.move 3, 'X'
     board.move 6, 'X'
-    board.column_1_filled?.should == true
+    #board.column_1_filled?.should == true
     board.check_winner.should == true
   end
 
@@ -63,7 +63,7 @@ describe Board, "Tictactoe" do
     board.move 1, 'X'
     board.move 4, 'X'
     board.move 7, 'X'
-    board.column_2_filled?.should == true
+    #board.column_2_filled?.should == true
     board.check_winner.should == true
   end
 
@@ -71,7 +71,7 @@ describe Board, "Tictactoe" do
     board.move 2, 'X'
     board.move 5, 'X'
     board.move 8, 'X'
-    board.column_3_filled?.should == true
+    #board.column_3_filled?.should == true
     board.check_winner.should == true
   end
 
@@ -79,7 +79,7 @@ describe Board, "Tictactoe" do
     board.move 0, 'X'
     board.move 4, 'X'
     board.move 8, 'X'
-    board.diagonal_1_filled?.should == true
+    #board.diagonal_1_filled?.should == true
     board.check_winner.should == true
   end
 
@@ -87,7 +87,7 @@ describe Board, "Tictactoe" do
     board.move 2, 'X'
     board.move 4, 'X'
     board.move 6, 'X'
-    board.diagonal_2_filled?.should == true
+    #board.diagonal_2_filled?.should == true
     board.check_winner.should == true
   end
                          

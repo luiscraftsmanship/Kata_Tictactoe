@@ -33,50 +33,25 @@ class Board
     @board.delete_at(position.to_i)
     @board.insert(position.to_i, turn.to_s)
   end
- 
-  def row_1_filled?
-    fills = @board.values_at( 0,1,2 ).uniq
-    fills.length == 1 && fills[0] != " "
-  end
-
-  def row_2_filled?
-    fills = @board.values_at( 3,4,5 ).uniq
-    fills.length == 1 && fills[0] != " "
-  end
-
-  def row_3_filled?
-    fills = @board.values_at( 6,7,8 ).uniq
-    fills.length == 1 && fills[0] != " "
-  end
-
-  def column_1_filled?
-    fills = @board.values_at( 0,3,6 ).uniq
-    fills.length == 1 && fills[0] != " "
-  end
-
-  def column_2_filled?
-    fills = @board.values_at( 1,4,7 ).uniq
-    fills.length == 1 && fills[0] != " "
-  end
-
-  def column_3_filled?
-    fills = @board.values_at( 2,5,8 ).uniq
-    fills.length == 1 && fills[0] != " "
-  end
-
-  def diagonal_1_filled?
-    fills = @board.values_at( 0,4,8 ).uniq
-    fills.length == 1 && fills[0] != " "
-  end
-
-  def diagonal_2_filled?
-    fills = @board.values_at( 2,4,6 ).uniq
-    fills.length == 1 && fills[0] != " "
-  end
 
   def check_winner
-    row_1_filled? || row_2_filled? || row_3_filled? ||
-    column_1_filled? || column_2_filled? || column_3_filled? ||
-    diagonal_1_filled? || diagonal_2_filled?
+	  return find_winner
+   # row_1_filled? || row_2_filled? || row_3_filled? ||
+   # column_1_filled? || column_2_filled? || column_3_filled? ||
+   # diagonal_1_filled? || diagonal_2_filled?
   end
+
+  def find_winner
+	  winners_moves.each do |move|
+    fills = @board.values_at(*move).uniq
+    result = fills.length == 1 && fills[0] != " "
+    return true if result
+	  end
+	  return false
+  end
+
+  def winners_moves
+    [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+  end
+
 end

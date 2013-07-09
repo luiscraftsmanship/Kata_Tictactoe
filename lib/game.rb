@@ -19,27 +19,9 @@ class Game
     return result
   end
 
-=begin  
-  def find_winner
-    winning_state do |positions|
-    # . . . for implementation
-    end
-  end
-
-  def winning_state
-    yield[ 0,1,2 ]
-    yield[ 3,4,5 ]
-    yield[ 6,7,8 ]
-    yield[ 0,3,6 ]
-    yield[ 1,4,7 ]
-    yield[ 2,5,8 ]
-    yield[ 0,4,8 ]
-    yield[ 2,4,6 ]
-  end
-=end  
-
+  
   def over?
-    @board.check_winner
+    @board.check_winner or is_tie_game?
   end
 
   def play
@@ -60,15 +42,21 @@ class Game
       @board.move position.to_i, turn
       advance_turn
     else
-      output.error_message end
+      output.error_message 
+    end
   end
 
   def notify_results
-    output.congratulation
+    output.congratulation unless is_tie_game?
+    output.tie_game
     @board.show
   end
 
   def advance_turn
     self.turn = ( @turn == X  ? O : X )
+  end
+
+  def is_tie_game?
+	  return @board.board.select{|position| position == ' '}.count == 0
   end
 end

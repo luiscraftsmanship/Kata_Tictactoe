@@ -54,6 +54,5 @@ Feature: The Tictactoe game
     Then I can insert 0 like position
     And The position is valid
     And The cell on board is filled
-    
-   
+  
 

@@ -15,7 +15,7 @@ class Output
     output.print "Please insert a digit between [ 0-8 ]: "
   end
 
-=begin  
+  
   def show_board( output=$stdout )
     output.print "\n\n"
     output.print " #{board.board[0]} |"
