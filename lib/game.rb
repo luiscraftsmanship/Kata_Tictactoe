@@ -14,17 +14,16 @@ class Game
     @board = Board.new
   end
  
-  def is_valid?(position)
-    result = (0..8).include?( position.to_i )
+  def is_valid? position
+    result = (0..8).include?(position.to_i)
     return result
   end
-
-  
+ 
   def over?
     @board.check_winner or is_tie_game?
   end
 
-  def play
+  def starts
     take_turn until over?
     notify_results 
   end
@@ -32,24 +31,25 @@ class Game
   def take_turn
     output.ask_for_move turn
     @board.show
-    validate_move
-    @board.check_winner
+    validate_move input.get_turn.to_i 
   end
 
-  def validate_move
-    position = input.get_turn.to_i
-    if (is_valid? position.to_i) && (@board.is_empty? position.to_i)
-      @board.move position.to_i, turn
+  def can_move? move
+    return false if over?
+    is_valid? move
+  end
+
+  def validate_move move
+    if ( can_move? move.to_i ) && ( @board.is_empty? move.to_i )
+      @board.to_move move.to_i, turn
       advance_turn
     else
-      output.error_message 
-    end
+      output.error_message end	    
   end
 
   def notify_results
-    output.congratulation unless is_tie_game?
-    output.tie_game
-    @board.show
+    output.show_results  
+    @board.show   
   end
 
   def advance_turn
@@ -57,6 +57,6 @@ class Game
   end
 
   def is_tie_game?
-	  return @board.board.select{|position| position == ' '}.count == 0
+    return @board.board.select{|position| position == ' '}.count == 0
   end
 end

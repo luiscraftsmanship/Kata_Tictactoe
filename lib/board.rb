@@ -7,21 +7,21 @@ class Board
     @board = board
     @board = [].fill( 0,9 ) { ' ' }
   end
-
-  def show
-    print "\n\n"
-    print " #{@board[0]} |"
-    print " #{@board[1]} |"
-    print " #{@board[2]}  "
-    print "\n---+---+---\n"
-    print " #{@board[3]} |"
-    print " #{@board[4]} |"
-    print " #{@board[5]}  "
-    print "\n---+---+---\n"
-    print " #{@board[6]} |"
-    print " #{@board[7]} |"
-    print " #{@board[8]}  "
-    print "\n\n"
+ 
+  def show( output=$stdout )
+    output.print "\n\n"
+    output.print " #{@board[0]} |"
+    output.print " #{@board[1]} |"
+    output.print " #{@board[2]}  "
+    output.print "\n---+---+---\n"
+    output.print " #{@board[3]} |"
+    output.print " #{@board[4]} |"
+    output.print " #{@board[5]}  "
+    output.print "\n---+---+---\n"
+    output.print " #{@board[6]} |"
+    output.print " #{@board[7]} |"
+    output.print " #{@board[8]}  "
+    output.print "\n\n"
   end
 
   def is_empty? position
@@ -29,25 +29,22 @@ class Board
     return !result
   end
 
-  def move position, turn
+  def to_move position, turn
     @board.delete_at(position.to_i)
     @board.insert(position.to_i, turn.to_s)
   end
 
   def check_winner
-	  return find_winner
-   # row_1_filled? || row_2_filled? || row_3_filled? ||
-   # column_1_filled? || column_2_filled? || column_3_filled? ||
-   # diagonal_1_filled? || diagonal_2_filled?
+    return find_winner
   end
 
   def find_winner
-	  winners_moves.each do |move|
+    winners_moves.each do |move|
     fills = @board.values_at(*move).uniq
     result = fills.length == 1 && fills[0] != " "
     return true if result
-	  end
-	  return false
+    end
+    return false
   end
 
   def winners_moves

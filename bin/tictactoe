@@ -9,4 +9,4 @@ input = Input.new
 game = Game.new output, input
 
 
-game.play
+game.starts
