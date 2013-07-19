@@ -20,7 +20,7 @@ class Game
   end
  
   def over?
-    @board.check_winner or is_tie_game?
+    @board.theres_winner? 
   end
 
   def starts
@@ -56,7 +56,4 @@ class Game
     self.turn = ( @turn == X  ? O : X )
   end
 
-  def is_tie_game?
-    return @board.board.select{|position| position == ' '}.count == 0
-  end
 end

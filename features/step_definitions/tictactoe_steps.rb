@@ -33,7 +33,7 @@ And /^The\ cell\ on\ board\ is\ (empty|filled)$/ do |validate_space|
   when 'empty'
     @board.is_empty?(valid).should == true
   when 'filled'
-    @board.move 0, 'X'	  
+    @board.to_move 0, 'X'	  
     @board.is_empty?(0).should == false
   end
 end
@@ -41,9 +41,9 @@ end
 Then /^I\ can\ do\ a\ mark\ like\ player (X|O)$/ do |turn|
   case turn
   when 'X'
-    @board.move 0, 'X'
+    @board.to_move 0, 'X'
   when 'O'
-    @board.move 1, 'O'
+    @board.to_move 1, 'O'
   end
 end
 

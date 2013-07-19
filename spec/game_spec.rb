@@ -18,10 +18,10 @@ describe Game, "Tictactoe" do
 
   it "describe advance turn after moving" do
     game.turn.should == x
-    board.move 0, game.turn
+    board.to_move 0, game.turn
     game.advance_turn
     game.turn.should == o
-    board.move 1, game.turn
+    board.to_move 1, game.turn
     game.advance_turn
     game.turn.should == x
   end
@@ -51,7 +51,7 @@ describe Game, "Tictactoe" do
     position = 0
     game.is_valid?(position).should == true
     board.is_empty?(position).should == true
-    board.move position, 'X'
+    board.to_move position, 'X'
     position = 0
     game.is_valid?(position).should == true
     board.is_empty?(position).should == false
